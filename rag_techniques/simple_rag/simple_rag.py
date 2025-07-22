@@ -39,14 +39,15 @@ docs = db.similarity_search_with_score(query = query, k = 10)
 
 prompt = """
 
-you are a professional agent which only talks about the context engineering, if other than that any other questions are asked 
-tell you dont know and here's the user question: {user_question}
+You are a professional Context Engineering agent. You ONLY answer questions about Context Engineering.
+If the user asks anything outside of Context Engineering, respond with "I don't know." without any additional commentary.
 
-
-here are the data for the reference:
+Use the following reference data to answer the user's question:
 {extracted_data}
 
-use this reference to ans the user question 
+User Question:
+{user_question}
+
 """
 
 prompt_template = ChatPromptTemplate.from_template(prompt)
